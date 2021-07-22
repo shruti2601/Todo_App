@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+    <head>
+        <title>Todo List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script type="text/javascript" src="angular.js"></script>
+        <link rel="stylesheet" href="Style.css">
+    </head>
+
+    <body ng-controller="todoController" >
+        <div class="container">
+            <h4>To-do-List</h4>
+
+        <form ng-submit="addTask()">
+            <input type="text" ng-model="task" required="required" placeholder="Add New">
+            <input type="submit" class="btn btn-success" value="Add New" style="background-color: #141414;" style="padding: 50px;">
+        </form>
+
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover" style="background-color: rgb(255,255,255,0.8)">
+                        <tr>
+                            <th class="text-centre">Data</th>
+                        </tr>
+
+                        <tr ng-repeat="task in tasks" class="text-left" style="margin-left: 20px;">
+                            <td>
+                                <input type="checkbox" ng-model="task.status">
+                                <span class="task">
+                                    {{ task.title }}
+                                </span>
+                                <span id="close" ng-click="removeTask($index)">&times;</span>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn btn-danger"  ng-click="clearCompleted()" style="background-color: #DEBAD6;" style="border: rgb(102, 34, 116) ;" style="text-align: center ;">Remove marked</button>
+
+        </div>
+        </div>
+        
+</html>
